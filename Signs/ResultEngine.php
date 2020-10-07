@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-abstract class Result
+abstract class ResultEngine
 {
-    public function beats(SignInterface $element): Result
+    public function beats(SignInterface $element): ResultEngine
     {
         if ($this instanceof $element) {
             return new TieResult();

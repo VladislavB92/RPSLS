@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 require_once 'SignInterface.php';
-require_once 'TieResult.php';
-require_once 'WinResult.php';
-require_once 'LoseResult.php';
+require_once 'Results/TieResult.php';
+require_once 'Results/WinResult.php';
+require_once 'Results/LoseResult.php';
 
-class Scissors extends Result implements SignInterface
+class Paper extends ResultEngine implements SignInterface
 {
     protected array $beateable = [
-        Paper::class
+        Rock::class
     ];
 
-    public function beats(SignInterface $element): Result
+    public function beats(SignInterface $element): ResultEngine
     {
         if ($this instanceof $element) {
             return new TieResult();
