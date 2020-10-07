@@ -9,9 +9,17 @@ require_once 'Results/LoseResult.php';
 
 class Rock extends ResultEngine implements SignInterface
 {
-    protected array $beateable = [
+
+    private string $signName = 'Rock';
+
+    protected array $beatableSigns = [
         Scissors::class
     ];
+
+    public function getName(): string
+    {
+        return $this->signName;
+    }
 
     public function beats(SignInterface $element): ResultEngine
     {
@@ -19,7 +27,7 @@ class Rock extends ResultEngine implements SignInterface
             return new TieResult();
         }
 
-        if (in_array(get_class($element), $this->beateable)) {
+        if (in_array(get_class($element), $this->beatableSigns)) {
             return new WinResult();
         }
 

@@ -10,9 +10,10 @@ abstract class ResultEngine
             return new TieResult();
         }
 
-        if (in_array(get_class($element), $this->beateable)) {
+        if (in_array(get_class($element), $this->beatableSigns)) {
             return new WinResult();
         }
+
         return new LoseResult();
     }
 }

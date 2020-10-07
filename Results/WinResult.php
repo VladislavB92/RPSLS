@@ -8,6 +8,6 @@ class WinResult extends ResultEngine
 {
     public function getMessage(): string
     {
-        return "You win!" . PHP_EOL;
+        return ", won!" . PHP_EOL;
     }
 }

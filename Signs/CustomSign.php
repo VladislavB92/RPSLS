@@ -7,22 +7,29 @@ require_once 'Results/TieResult.php';
 require_once 'Results/WinResult.php';
 require_once 'Results/LoseResult.php';
 
-class AdditionalSign extends ResultEngine implements SignInterface
+class CustomSign extends ResultEngine implements SignInterface
 {
     private string $signName;
-    protected array $beateable = [
-        Scissors::class
-    ];
+    protected array $beatableSigns = [];
 
-    public function __construct(string $name)
+    public function __construct(string $name, array $beatableSigns)
     {
         $this->signName = $name;
 
+        foreach ($beatableSigns as $element) {
+            $this->beatableSigns[] = $element;
+        }
     }
 
     public function getName(): string
     {
         return $this->signName;
+    }
+
+    // To know which signs can beat
+    public function getBeatableSigns()
+    {
+        return $this->beatableSigns;
     }
 
     public function beats(SignInterface $element): ResultEngine
@@ -31,7 +38,7 @@ class AdditionalSign extends ResultEngine implements SignInterface
             return new TieResult();
         }
 
-        if (in_array(get_class($element), $this->beateable)) {
+        if (in_array(get_class($element), $this->beatableSigns)) {
             return new WinResult();
         }
 
