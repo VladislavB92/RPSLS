@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-class TieResult implements Result
+require_once 'Result.php';
+
+class WinResult extends Result
 {
     public function getMessage(): string
     {
-        return "It's a tie!";
+        return "You win!";
     }
 }

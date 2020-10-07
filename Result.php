@@ -7,13 +7,12 @@ abstract class Result
     public function beats(SignInterface $element): Result
     {
         if ($this instanceof $element) {
-            return new WinResult();
+            return new TieResult();
         }
 
         if (in_array(get_class($element), $this->beateable)) {
-            return new LoseResult();
+            return new WinResult();
         }
-
-        return new TieResult();
+        return new LoseResult();
     }
 }

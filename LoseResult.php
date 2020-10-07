@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-class LoseResult implements Result
+require_once 'Result.php';
+
+class LoseResult extends Result
 {
     public function getMessage(): string
     {
