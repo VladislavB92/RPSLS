@@ -15,36 +15,108 @@ $signs->addSigns(new Scissors());
 $signs->addSigns(new CustomSign("Spock", ['Scissors', 'Rock']));
 $signs->addSigns(new CustomSign("Lizard", ['Spock', 'Paper']));
 $fighter = $signs->getAllSigns();
-$playAgain = "y";
-$playerFighter = "";
 
-echo "\nWelcome to the Rock-Paper-Scissors-Lizard-Spock game!\n";
+$playerFighter = $_GET['fighter'] ?? '0';
 
-echo "\nOur today's fighters for your choice!\n";
+$computerFighter = $fighter[rand(0, count($signs->getAllSigns()) - 1)];
 
-while ($playAgain === "y") {
-    $signs->displaySigns() . PHP_EOL;
-    $playerFighter = readline("\nChoose your fighter's number: ");
-    $computerFighter = $fighter[rand(0, count($signs->getAllSigns()) - 1)];
+$fight = $fighter[$playerFighter]->beats($computerFighter);
 
-    $fight = $fighter[$playerFighter]->beats($computerFighter);
+$result = new $fight;
 
-    $result = new $fight;
+?>
 
-    echo "\nFIGHT!\n";
-    sleep(1);
+<html lang="en">
 
-    echo "\n" . $fighter[$playerFighter]->getName() .
-        " VS " .
-        $computerFighter->getName() . PHP_EOL;
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPSLS</title>
+</head>
 
-    if ($result instanceof TieResult) {
-        echo "\n" . $result->getMessage() . PHP_EOL;
-    } else {
-        echo "\nYour fighter, " .
-            $fighter[$playerFighter]->getName() .
-            $result->getMessage() . PHP_EOL;
-    }
+<body>
+    <div class="header">
+        <h1>RPSLS</h1>
+    </div>
 
-    $playAgain = readline("\nPlay again? y/n \n");
-}
+    <div class="main">
+
+        <div class="fighters">
+            <h2>CHOOSE YOUR FIGHTER</h2>
+
+            <form action="/" method="get">
+
+                <input type="submit" id="rock" value="ROCK" />
+                <input type="hidden" name="fighter" value="0" />
+
+            </form>
+
+            <form action="/" method="get">
+
+                <input type="submit" id="paper" value="PAPER" />
+                <input type="hidden" name="fighter" value="1" />
+
+            </form>
+
+            <form action="/" method="get">
+
+                <input type="submit" id="scissors" value="SCISSORS" />
+                <input type="hidden" name="fighter" value="2" />
+
+            </form>
+
+            <form action="/" method="get">
+
+                <input type="submit" id="lizard" value="LIZARD" />
+                <input type="hidden" name="fighter" value="3" />
+
+            </form>
+
+
+            <form action="/" method="get">
+
+                <input type="submit" id="spock" value="SPOCK" />
+                <input type="hidden" name="fighter" value="4" />
+
+            </form>
+
+        </div>
+
+        <div class="fightScreen">
+
+            <div class="player1">
+                <img src="snippets/<?= strtolower($fighter[$playerFighter]->getName()); ?>.gif">
+            </div>
+
+            <div class="vs">
+                <p id="vsSign">VS</p>
+            </div>
+
+            <div class="cp">
+                <img src="snippets/<?= strtolower($computerFighter->getName()); ?>.gif">
+            </div>
+
+            <div class="outcome">
+
+                <?php if ($result instanceof TieResult) : ?>
+                    <?= $result->getMessage(); ?>
+                <?php else : ?>
+                <?= $fighter[$playerFighter]->getName() .
+                        $result->getMessage();
+                endif; ?>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

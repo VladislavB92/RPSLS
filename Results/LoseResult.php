@@ -8,6 +8,6 @@ class LoseResult extends ResultEngine
 {
     public function getMessage(): string
     {
-        return ", lost!" . PHP_EOL;
+        return " loses!" . PHP_EOL;
     }
 }

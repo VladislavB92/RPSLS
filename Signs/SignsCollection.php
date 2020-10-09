@@ -16,10 +16,4 @@ class SignsCollection
         $this->signs[] = $sign;
     }
 
-    public function displaySigns(): void
-    {
-        foreach ($this->signs as $id => $sign) {
-            echo "Fighter Nr. " . $id . " - " . $sign->getName() . PHP_EOL;
-        }
-    }
 }
