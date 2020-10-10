@@ -33,12 +33,13 @@ $result = new $fight;
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPSLS</title>
+    <title>MF: RPSLS</title>
 </head>
 
 <body>
     <div class="header">
-        <h1>RPSLS</h1>
+        <h1>Mortal Fight: RPSLS edition</h1>
+
     </div>
 
     <div class="main">
@@ -87,7 +88,11 @@ $result = new $fight;
         <div class="fightScreen">
 
             <div class="player1">
-                <img src="snippets/<?= strtolower($fighter[$playerFighter]->getName()); ?>.gif">
+                <?php if (!isset($_GET['fighter'])) : ?>
+                    <img id="vsimage" src="snippets/rules.jpg">
+                <?php else : ?>
+                    <img id="vsimage" src="snippets/<?= strtolower($fighter[$playerFighter]->getName()); ?>.gif">
+                <?php endif; ?>
             </div>
 
             <div class="vs">
@@ -95,12 +100,18 @@ $result = new $fight;
             </div>
 
             <div class="cp">
-                <img src="snippets/<?= strtolower($computerFighter->getName()); ?>.gif">
+                <?php if (!isset($_GET['fighter'])) : ?>
+                    <img id="vsimage" src="snippets/rules.jpg">
+                <?php else : ?>
+                    <img id="vsimage" src="snippets/<?= strtolower($computerFighter->getName()); ?>.gif">
+                <?php endif; ?>
             </div>
 
             <div class="outcome">
 
-                <?php if ($result instanceof TieResult) : ?>
+            <?php if (!isset($_GET['fighter'])) : ?>
+                Read rules and choose a fighter
+                <?php elseif ($result instanceof TieResult) : ?>
                     <?= $result->getMessage(); ?>
                 <?php else : ?>
                 <?= $fighter[$playerFighter]->getName() .
@@ -110,13 +121,7 @@ $result = new $fight;
             </div>
 
         </div>
-
-
-
-
     </div>
-
-
 </body>
 
 </html>
