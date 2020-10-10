@@ -7,9 +7,9 @@ require_once 'Results/TieResult.php';
 require_once 'Results/WinResult.php';
 require_once 'Results/LoseResult.php';
 
-class Rock extends ResultEngine implements FighterInterface
+class Lizard extends ResultEngine implements FighterInterface
 {
-    private string $fightersName = 'Rock';
+    private string $fightersName = "Lizard";
     protected array $beatableFighters = [];
 
     public function __construct(array $beatableFighters)
@@ -24,11 +24,12 @@ class Rock extends ResultEngine implements FighterInterface
         return $this->fightersName;
     }
 
+    // To know which fighters can be beaten
     public function getBeatableFighters()
     {
         return $this->beatableFighters;
     }
-    
+
     public function beats(FighterInterface $fighter): ResultEngine
     {
         if ($this instanceof $fighter) {

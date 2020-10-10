@@ -10,14 +10,23 @@ require_once 'Results/LoseResult.php';
 class Scissors extends ResultEngine implements FighterInterface
 {
     private string $fightersName = 'Scissors';
+    protected array $beatableFighters = [];
 
-    protected array $beatableFighters = [
-        Paper::class
-    ];
+    public function __construct(array $beatableFighters)
+    {
+        foreach ($beatableFighters as $fighter) {
+            $this->beatableFighters[] = $fighter;
+        }
+    }
 
     public function getName(): string
     {
         return $this->fightersName;
+    }
+
+    public function getBeatableFighters()
+    {
+        return $this->beatableFighters;
     }
 
     public function beats(FighterInterface $fighter): ResultEngine

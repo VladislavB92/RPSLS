@@ -7,15 +7,13 @@ require_once 'Results/TieResult.php';
 require_once 'Results/WinResult.php';
 require_once 'Results/LoseResult.php';
 
-class CustomFighter extends ResultEngine implements FighterInterface
+class Spock extends ResultEngine implements FighterInterface
 {
-    private string $fightersName;
+    private string $fightersName = "Spock";
     protected array $beatableFighters = [];
 
-    public function __construct(string $name, array $beatableFighters)
+    public function __construct(array $beatableFighters)
     {
-        $this->fightersName = $name;
-
         foreach ($beatableFighters as $fighter) {
             $this->beatableFighters[] = $fighter;
         }

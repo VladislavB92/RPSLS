@@ -6,17 +6,19 @@ require_once 'Fighters/FightersCollection.php';
 require_once 'Fighters/Rock.php';
 require_once 'Fighters/Paper.php';
 require_once 'Fighters/Scissors.php';
-require_once 'Fighters/CustomFighter.php';
+require_once 'Fighters/Spock.php';
+require_once 'Fighters/Lizard.php';
 
 $fighters = new FightersCollection();
-$fighters->addFighter(new Rock());
-$fighters->addFighter(new Paper());
-$fighters->addFighter(new Scissors());
-$fighters->addFighter(new CustomFighter("Spock", ['Scissors', 'Rock']));
-$fighters->addFighter(new CustomFighter("Lizard", ['Spock', 'Paper']));
+$fighters->addFighter(new Rock(["Scissors", "Lizard"]));
+$fighters->addFighter(new Paper(["Rock", "Spock"]));
+$fighters->addFighter(new Scissors(["Paper", "Lizard"]));
+$fighters->addFighter(new Lizard(['Spock', 'Paper']));
+$fighters->addFighter(new Spock(['Scissors', 'Rock']));
 $fighter = $fighters->getAllFighters();
 
 $playerFighter = $_GET['fighter'] ?? '0';
+
 $computerFighter = $fighter[rand(0, count($fighters->getAllFighters()) - 1)];
 $fight = $fighter[$playerFighter]->beats($computerFighter);
 $result = new $fight;
