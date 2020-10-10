@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-require_once 'Signs/ResultEngine.php';
+require_once 'Fighters/ResultEngine.php';
 
 class WinResult extends ResultEngine
 {
     public function getMessage(): string
     {
-        return " wins!" . PHP_EOL;
+        return " won!" . PHP_EOL;
     }
 }

@@ -8,7 +8,6 @@ body {
 html, body {
     height: 100%;
     background-image: url('snippets/space3.svg');
-
     background-size: 100%;
 }
 
@@ -86,11 +85,7 @@ h2 {
     font-size: 500%;
     flex: 0 0 120px;
     color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .cp {
@@ -116,24 +111,20 @@ h2 {
     align-items: center;
     font-size: 300%;
     color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 #rock {
-    background: url("snippets/rock.gif");
-    background-repeat: no-repeat;
     position: absolute;
     cursor: pointer;
     height: 100px;
     width: 200px;
-    padding-bottom: 5px;
-    border: 0;
+    background: url("snippets/rock.gif");
+    background-repeat: no-repeat;
     background-size: 100%;
     background-size: 200px auto;
+    padding-bottom: 5px;
+    border: 0;
     margin: 0;
     top: 17%;
     left: 50%;
@@ -146,16 +137,16 @@ h2 {
 }
 
 #paper {
-    background: url("snippets/paper.gif");
-    background-repeat: no-repeat;
     position: absolute;
     cursor: pointer;
     height: 100px;
     width: 200px;
-    padding-bottom: 5px;
-    border: 0;
+    background: url("snippets/paper.gif");
+    background-repeat: no-repeat;
     background-size: 100%;
     background-size: 200px auto;
+    padding-bottom: 5px;
+    border: 0;
     margin: 0;
     top: 34%;
     left: 50%;
@@ -168,16 +159,16 @@ h2 {
 }
 
 #scissors {
-    background: url("snippets/scissors.gif");
-    background-repeat: no-repeat;
     position: absolute;
     cursor: pointer;
     height: 100px;
     width: 200px;
-    padding-bottom: 5px;
-    border: 0;
+    background: url("snippets/scissors.gif");
+    background-repeat: no-repeat;
     background-size: 100%;
     background-size: 200px auto;
+    padding-bottom: 5px;
+    border: 0;
     margin: 0;
     top: 51%;
     left: 50%;
@@ -190,16 +181,16 @@ h2 {
 }
 
 #lizard {
-    background: url("snippets/lizard.gif");
-    background-repeat: no-repeat;
     position: absolute;
     cursor: pointer;
     height: 100px;
     width: 200px;
-    padding-bottom: 5px;
-    border: 0;
+    background: url("snippets/lizard.gif");
+    background-repeat: no-repeat;
     background-size: 100%;
     background-size: 200px auto;
+    padding-bottom: 5px;
+    border: 0;
     margin: 0;
     top: 68%;
     left: 50%;
@@ -212,16 +203,16 @@ h2 {
 }
 
 #spock {
-    background: url("snippets/spock.gif");
-    background-repeat: no-repeat;
     position: absolute;
     cursor: pointer;
     height: 100px;
     width: 200px;
-    padding-bottom: 5px;
-    border: 0;
+    background: url("snippets/spock.gif");
+    background-repeat: no-repeat;
     background-size: 100%;
     background-size: 200px auto;
+    padding-bottom: 5px;
+    border: 0;
     margin: 0;
     top: 85%;
     left: 50%;
@@ -235,11 +226,10 @@ h2 {
 
 #vsimage {
     height: 50%;
-    width:70%;
+    width: 70%;
     object-fit: cover;
     border-style: inset;
     border-color: ee6f57;
     border-bottom-width: thick;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }

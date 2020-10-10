@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once 'Signs/ResultEngine.php';
+require_once 'Fighters/ResultEngine.php';
 
 class TieResult extends ResultEngine
 {

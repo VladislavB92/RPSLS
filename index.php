@@ -2,26 +2,23 @@
 
 declare(strict_types=1);
 
-require_once 'Signs/SignsCollection.php';
-require_once 'Signs/Rock.php';
-require_once 'Signs/Paper.php';
-require_once 'Signs/Scissors.php';
-require_once 'Signs/CustomSign.php';
+require_once 'Fighters/FightersCollection.php';
+require_once 'Fighters/Rock.php';
+require_once 'Fighters/Paper.php';
+require_once 'Fighters/Scissors.php';
+require_once 'Fighters/CustomFighter.php';
 
-$signs = new SignsCollection();
-$signs->addSigns(new Rock());
-$signs->addSigns(new Paper());
-$signs->addSigns(new Scissors());
-$signs->addSigns(new CustomSign("Spock", ['Scissors', 'Rock']));
-$signs->addSigns(new CustomSign("Lizard", ['Spock', 'Paper']));
-$fighter = $signs->getAllSigns();
+$fighters = new FightersCollection();
+$fighters->addFighter(new Rock());
+$fighters->addFighter(new Paper());
+$fighters->addFighter(new Scissors());
+$fighters->addFighter(new CustomFighter("Spock", ['Scissors', 'Rock']));
+$fighters->addFighter(new CustomFighter("Lizard", ['Spock', 'Paper']));
+$fighter = $fighters->getAllFighters();
 
 $playerFighter = $_GET['fighter'] ?? '0';
-
-$computerFighter = $fighter[rand(0, count($signs->getAllSigns()) - 1)];
-
+$computerFighter = $fighter[rand(0, count($fighters->getAllFighters()) - 1)];
 $fight = $fighter[$playerFighter]->beats($computerFighter);
-
 $result = new $fight;
 
 ?>
@@ -39,54 +36,41 @@ $result = new $fight;
 <body>
     <div class="header">
         <h1>Mortal Fight: RPSLS edition</h1>
-
     </div>
 
     <div class="main">
-
         <div class="fighters">
+
             <h2>CHOOSE YOUR FIGHTER</h2>
 
             <form action="/" method="get">
-
                 <input type="submit" id="rock" value="ROCK" />
                 <input type="hidden" name="fighter" value="0" />
-
             </form>
 
             <form action="/" method="get">
-
                 <input type="submit" id="paper" value="PAPER" />
                 <input type="hidden" name="fighter" value="1" />
-
             </form>
 
             <form action="/" method="get">
-
                 <input type="submit" id="scissors" value="SCISSORS" />
                 <input type="hidden" name="fighter" value="2" />
-
             </form>
 
             <form action="/" method="get">
-
                 <input type="submit" id="lizard" value="LIZARD" />
                 <input type="hidden" name="fighter" value="3" />
-
             </form>
 
 
             <form action="/" method="get">
-
                 <input type="submit" id="spock" value="SPOCK" />
                 <input type="hidden" name="fighter" value="4" />
-
             </form>
-
         </div>
 
         <div class="fightScreen">
-
             <div class="player1">
                 <?php if (!isset($_GET['fighter'])) : ?>
                     <img id="vsimage" src="snippets/rules.jpg">
@@ -108,18 +92,15 @@ $result = new $fight;
             </div>
 
             <div class="outcome">
-
-            <?php if (!isset($_GET['fighter'])) : ?>
-                Read rules and choose a fighter
+                <?php if (!isset($_GET['fighter'])) : ?>
+                    Read rules and choose a fighter
                 <?php elseif ($result instanceof TieResult) : ?>
                     <?= $result->getMessage(); ?>
                 <?php else : ?>
                 <?= $fighter[$playerFighter]->getName() .
                         $result->getMessage();
                 endif; ?>
-
             </div>
-
         </div>
     </div>
 </body>
