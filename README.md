@@ -1,3 +1,3 @@
 # RPSLS
-Rock, Paper, Scissors, Lizard, Spock game in PHP.
+Interactive Rock, Paper, Scissors, Lizard, Spock game in PHP.
 ![](rpsls.gif)
